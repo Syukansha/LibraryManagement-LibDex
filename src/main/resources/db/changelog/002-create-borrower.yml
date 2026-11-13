@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-create-borrower
+      author: syukri
+      changes:
+        - createTable:
+            tableName: Borrower
+            columns:
+              - column:
+                  name: Id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: Name
+                  type: varchar(150)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: Email
+                  type: varchar(254)
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: uk_borrower_email

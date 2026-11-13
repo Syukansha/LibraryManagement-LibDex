@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/001-create-books.yml
+  - include:
+      file: db/changelog/002-create-borrower.yml
+  - include:
+      file: db/changelog/003-create-bookcopy.yml
+  - include:
+      file: db/changelog/004-create-loans.yml

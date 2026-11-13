@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-books
+      author: syukri
+      changes:
+        - createTable:
+            tableName: books
+            columns:
+              - column:
+                  name: Id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: Title
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: Author
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ISBN
+                  type: varchar(13)
+                  constraints:
+                    nullable: false
+                    unique: true
+                    uniqueConstraintName: uk_books_isbn
+              - column:
+                  name: Availability
+                  type: boolean
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false

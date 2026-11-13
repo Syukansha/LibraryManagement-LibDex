@@ -1,0 +1,71 @@
+2026-11-12T17:03:44.446+08:00  INFO 408 --- [LibraryManagement] [main] c.S.L.LibraryManagementApplication       : Starting LibraryManagementApplication using Java 25.0.1 with PID 408 (D:\Aeon_assessment_2026\LibraryManagement\build\classes\java\main started by Syukri in D:\Aeon_assessment_2026\LibraryManagement)
+2026-11-12T17:03:44.451+08:00  INFO 408 --- [LibraryManagement] [main] c.S.L.LibraryManagementApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-11-12T17:03:45.347+08:00  INFO 408 --- [LibraryManagement] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-12T17:03:45.377+08:00  INFO 408 --- [LibraryManagement] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 0 JPA repository interfaces.
+2026-11-12T17:03:46.075+08:00  INFO 408 --- [LibraryManagement] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-11-12T17:03:46.091+08:00  INFO 408 --- [LibraryManagement] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-12T17:03:46.091+08:00  INFO 408 --- [LibraryManagement] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-11-12T17:03:46.182+08:00  INFO 408 --- [LibraryManagement] [main] o.a.c.c.C.[.[localhost].[/LibDex]        : Initializing Spring embedded WebApplicationContext
+2026-11-12T17:03:46.182+08:00  INFO 408 --- [LibraryManagement] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1659 ms
+2026-11-12T17:03:46.376+08:00  INFO 408 --- [LibraryManagement] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-12T17:03:46.630+08:00  INFO 408 --- [LibraryManagement] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@484149eb
+2026-11-12T17:03:46.632+08:00  INFO 408 --- [LibraryManagement] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-12T17:03:46.829+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.database                       : Set default schema name to public
+2026-11-12T17:03:47.023+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.snapshot                       : Creating snapshot
+2026-11-12T17:03:47.127+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.lockservice                    : Successfully acquired change log lock
+2026-11-12T17:03:47.137+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.changelog                      : Creating database history table with name: public.databasechangelog
+2026-11-12T17:03:47.149+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.command                        : Clearing database change log checksums for database postgresql
+2026-11-12T17:03:47.162+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.lockservice                    : Successfully released change log lock
+2026-11-12T17:03:47.164+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.command                        : Command execution complete
+2026-11-12T17:03:48.903+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2026-11-12T17:03:49.020+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.lockservice                    : Successfully acquired change log lock
+2026-11-12T17:03:49.022+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.command                        : Using deploymentId: 4474226347
+2026-11-12T17:03:49.025+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2026-11-12T17:03:49.055+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.ui                             : Running Changeset: db/changelog/001-create-books.yml::001-create-books::syukri
+2026-11-12T17:03:49.073+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.changelog                      : Table books created
+2026-11-12T17:03:49.077+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.changelog                      : ChangeSet db/changelog/001-create-books.yml::001-create-books::syukri ran successfully in 19ms
+2026-11-12T17:03:49.091+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.ui                             : Running Changeset: db/changelog/002-create-borrower.yml::002-create-borrower::syukri
+2026-11-12T17:03:49.101+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.changelog                      : Table Borrower created
+2026-11-12T17:03:49.105+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.changelog                      : ChangeSet db/changelog/002-create-borrower.yml::002-create-borrower::syukri ran successfully in 13ms
+2026-11-12T17:03:49.114+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.ui                             : Running Changeset: db/changelog/003-create-bookcopy.yml::003-create-bookcopy::syukri
+2026-11-12T17:03:49.121+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.changelog                      : Table BookCopy created
+2026-11-12T17:03:49.130+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.changelog                      : Foreign key constraint added to BookCopy (BookId)
+2026-11-12T17:03:49.135+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.changelog                      : ChangeSet db/changelog/003-create-bookcopy.yml::003-create-bookcopy::syukri ran successfully in 20ms
+2026-11-12T17:03:49.144+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.ui                             : Running Changeset: db/changelog/004-create-loans.yml::004-create-loans::syukri
+2026-11-12T17:03:49.153+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.changelog                      : Table loans created
+2026-11-12T17:03:49.159+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.changelog                      : Foreign key constraint added to loans (BorrowerId)
+2026-11-12T17:03:49.166+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.changelog                      : Foreign key constraint added to loans (BookCopyId)
+2026-11-12T17:03:49.171+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.changelog                      : ChangeSet db/changelog/004-create-loans.yml::004-create-loans::syukri ran successfully in 25ms
+2026-11-12T17:03:49.192+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.util                           : UPDATE SUMMARY
+2026-11-12T17:03:49.193+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.util                           : Run:                          4
+2026-11-12T17:03:49.193+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.util                           : Previously run:               0
+2026-11-12T17:03:49.193+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.util                           : Filtered out:                 0
+2026-11-12T17:03:49.193+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.util                           : -------------------------------
+2026-11-12T17:03:49.193+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.util                           : Total change sets:            4
+2026-11-12T17:03:49.195+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.util                           : Update summary generated
+2026-11-12T17:03:49.202+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.command                        : Update command completed successfully.
+2026-11-12T17:03:49.202+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.ui                             : Liquibase: Update has been successful. Rows affected: 4
+2026-11-12T17:03:49.212+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.lockservice                    : Successfully released change log lock
+2026-11-12T17:03:49.215+08:00  INFO 408 --- [LibraryManagement] [main] liquibase.command                        : Command execution complete
+2026-11-12T17:03:49.333+08:00  INFO 408 --- [LibraryManagement] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-12T17:03:49.386+08:00  INFO 408 --- [LibraryManagement] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-11-12T17:03:49.416+08:00  INFO 408 --- [LibraryManagement] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-12T17:03:49.788+08:00  INFO 408 --- [LibraryManagement] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-12T17:03:49.868+08:00  INFO 408 --- [LibraryManagement] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 18.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-12T17:03:50.892+08:00  INFO 408 --- [LibraryManagement] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-12T17:03:50.895+08:00  INFO 408 --- [LibraryManagement] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-12T17:03:50.951+08:00  WARN 408 --- [LibraryManagement] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-11-12T17:03:51.422+08:00  INFO 408 --- [LibraryManagement] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/LibDex'
+2026-11-12T17:03:51.434+08:00  INFO 408 --- [LibraryManagement] [main] c.S.L.LibraryManagementApplication       : Started LibraryManagementApplication in 7.606 seconds (process running for 8.058)
+2026-11-12T17:03:51.439+08:00  INFO 408 --- [LibraryManagement] [main] c.S.L.LibraryManagementApplication       : *** STARTED:  Application successfully started ***
+2026-11-12T17:03:51.441+08:00  INFO 408 --- [LibraryManagement] [main] c.S.L.LibraryManagementApplication       : *** LibDex Service Started ***
+2026-11-12T17:03:51.442+08:00  INFO 408 --- [LibraryManagement] [main] c.S.L.LibraryManagementApplication       : ✅ Successfully connected to PostgreSQL database: library_db
+2026-11-12T19:41:33.255+08:00  WARN 408 --- [LibraryManagement] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=46s259ms338µs800ns).
+2026-11-12T20:41:49.388+08:00  WARN 408 --- [LibraryManagement] [HikariPool-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h16s131ms656µs).

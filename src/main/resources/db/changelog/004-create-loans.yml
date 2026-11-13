@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004-create-loans
+      author: syukri
+      changes:
+        - createTable:
+            tableName: loans
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: BorrowerId
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: BookCopyId
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: BorrowedAt
+                  type: timestamptz
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ReturnedAt
+                  type: timestamptz
+        - addForeignKeyConstraint:
+            baseTableName: loans
+            baseColumnNames: BorrowerId
+            referencedTableName: Borrower
+            referencedColumnNames: Id
+            constraintName: fk_loans_borrower
+        - addForeignKeyConstraint:
+            baseTableName: loans
+            baseColumnNames: BookCopyId
+            referencedTableName: BookCopy
+            referencedColumnNames: id
+            constraintName: fk_loans_bookcopy

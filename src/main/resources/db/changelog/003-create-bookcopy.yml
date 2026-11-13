@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-create-bookcopy
+      author: syukri
+      changes:
+        - createTable:
+            tableName: BookCopy
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: BookId
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: Availability
+                  type: boolean
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: BookCopy
+            baseColumnNames: BookId
+            referencedTableName: books
+            referencedColumnNames: Id
+            constraintName: fk_bookcopy_book
