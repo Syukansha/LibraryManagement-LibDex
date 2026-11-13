@@ -4,7 +4,7 @@ databaseChangeLog:
       author: syukri
       changes:
         - createTable:
-            tableName: loans
+            tableName: Loans
             columns:
               - column:
                   name: id
@@ -31,13 +31,13 @@ databaseChangeLog:
                   name: ReturnedAt
                   type: timestamptz
         - addForeignKeyConstraint:
-            baseTableName: loans
+            baseTableName: Loans
             baseColumnNames: BorrowerId
             referencedTableName: Borrower
             referencedColumnNames: Id
             constraintName: fk_loans_borrower
         - addForeignKeyConstraint:
-            baseTableName: loans
+            baseTableName: Loans
             baseColumnNames: BookCopyId
             referencedTableName: BookCopy
             referencedColumnNames: id

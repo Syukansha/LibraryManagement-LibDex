@@ -26,6 +26,6 @@ databaseChangeLog:
         - addForeignKeyConstraint:
             baseTableName: BookCopy
             baseColumnNames: BookId
-            referencedTableName: books
+            referencedTableName: Books
             referencedColumnNames: Id
             constraintName: fk_bookcopy_book
