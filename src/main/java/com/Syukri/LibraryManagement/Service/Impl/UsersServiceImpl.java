@@ -9,6 +9,7 @@ import com.Syukri.LibraryManagement.Service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -18,6 +19,7 @@ public class UsersServiceImpl implements UsersService {
     @Autowired
     private UsersRepository usersRepository;
 
+    private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
     @Override
     public Optional<UserDTO> getUserByUsername(String username) {
@@ -64,6 +66,42 @@ public class UsersServiceImpl implements UsersService {
             return true;
         }
     }
+
+    @Override
+    public UserDTO updateUser(Optional<Users> user) {
+
+        try {
+            Users request = user.orElseThrow(() ->
+                    new IllegalArgumentException("User data is required"));
+
+            Users existingUser = usersRepository.findById(request.getId())
+                    .orElseThrow(() ->
+                            new UserNotFound(request.getUsername()));
+
+            if (request.getUsername() != null) {
+                existingUser.setUsername(request.getUsername());
+            }
+
+            if (request.getEmail() != null) {
+                existingUser.setEmail(request.getEmail());
+            }
+
+            if (request.getPassword() != null
+                    && !request.getPassword().isBlank()) {
+                existingUser.setPassword(
+                        bCryptPasswordEncoder.encode(request.getPassword())
+                );
+            }
+
+            usersRepository.save(existingUser);
+
+
+            return null;
+        }catch (RuntimeException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
 
 
 }

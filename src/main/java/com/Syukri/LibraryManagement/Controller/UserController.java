@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 
 @CrossOrigin
 @RestController
@@ -73,4 +74,22 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
         }
     }
+
+    @PatchMapping("/edit-user")
+    public ResponseEntity<?> editUser(@RequestBody Users user) {
+        try {
+            if(user.getId() != null) {
+                return ResponseEntity.ok().body(usersService.updateUser(Optional.ofNullable(user)));
+            }else {
+                return ResponseEntity.badRequest().body("UserID is null");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("message", "Error updating user: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+        }
+    }
+
+
 }
