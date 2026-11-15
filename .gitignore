@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Local config/secrets (12-factor III): never commit real values ###
+.env

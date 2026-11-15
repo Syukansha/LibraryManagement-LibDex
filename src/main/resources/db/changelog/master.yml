@@ -11,5 +11,11 @@ databaseChangeLog:
       file: db/changelog/005-create-users.yml
   - include:
       file: db/changelog/006-add-admin.yml
+  - include:
+      file: db/changelog/007-alter-books-isbn-to-uuid.yml
+  - include:
+      file: db/changelog/008-drop-books-isbn-unique.yml
+  - include:
+      file: db/changelog/009-rename-bookcopy-to-book-copy.yml
 
 

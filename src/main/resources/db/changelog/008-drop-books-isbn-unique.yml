@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 008-drop-books-isbn-unique
+      author: syukri
+      changes:
+        - dropUniqueConstraint:
+            tableName: books
+            constraintName: uk_books_isbn

@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: 007-alter-books-isbn-to-uuid
+      author: syukri
+      changes:
+        - modifyDataType:
+            tableName: books
+            columnName: isbn
+            newDataType: varchar(36)

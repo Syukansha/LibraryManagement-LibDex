@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 009-rename-bookcopy-to-book-copy
+      author: syukri
+      changes:
+        - renameTable:
+            oldTableName: bookcopy
+            newTableName: book_copy
