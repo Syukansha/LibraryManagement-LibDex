@@ -1,7 +1,6 @@
 package com.Syukri.LibraryManagement.Dto;
 
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.UUID;
 

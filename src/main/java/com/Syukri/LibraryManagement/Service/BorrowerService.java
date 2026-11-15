@@ -1,10 +1,7 @@
 package com.Syukri.LibraryManagement.Service;
 
 import com.Syukri.LibraryManagement.Dto.BorrowerDTO;
-import com.Syukri.LibraryManagement.Dto.UserDTO;
 import com.Syukri.LibraryManagement.Entity.Borrower;
-import com.Syukri.LibraryManagement.Entity.Users;
-import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.UUID;

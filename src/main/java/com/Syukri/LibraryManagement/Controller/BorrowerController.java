@@ -3,7 +3,6 @@ package com.Syukri.LibraryManagement.Controller;
 import com.Syukri.LibraryManagement.Dto.BorrowerDTO;
 import com.Syukri.LibraryManagement.Dto.UserDTO;
 import com.Syukri.LibraryManagement.Entity.Borrower;
-import com.Syukri.LibraryManagement.Entity.Users;
 import com.Syukri.LibraryManagement.Service.BorrowerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

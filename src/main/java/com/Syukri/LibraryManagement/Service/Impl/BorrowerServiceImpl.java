@@ -1,16 +1,13 @@
 package com.Syukri.LibraryManagement.Service.Impl;
 
 import com.Syukri.LibraryManagement.Dto.BorrowerDTO;
-import com.Syukri.LibraryManagement.Dto.UserDTO;
 import com.Syukri.LibraryManagement.Entity.Borrower;
-import com.Syukri.LibraryManagement.Entity.Users;
 import com.Syukri.LibraryManagement.Exception.UserIDNotFound;
 import com.Syukri.LibraryManagement.Exception.UserNotFound;
 import com.Syukri.LibraryManagement.Exception.UsernameEmailAlreadyExisted;
 import com.Syukri.LibraryManagement.Repository.BorrowerRepository;
 import com.Syukri.LibraryManagement.Service.BorrowerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
