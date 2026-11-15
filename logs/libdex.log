@@ -2040,3 +2040,65 @@ io.jsonwebtoken.security.SignatureException: JWT signature does not match locall
 2026-11-15T12:42:09.795+08:00 DEBUG 17580 --- [LibraryManagement] [http-nio-8080-exec-2] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
 2026-11-15T12:42:22.907+08:00 DEBUG 17580 --- [LibraryManagement] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing PATCH /api/users/edit-user
 2026-11-15T12:42:26.548+08:00 DEBUG 17580 --- [LibraryManagement] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured PATCH /api/users/edit-user
+2026-11-15T16:45:32.976+08:00  INFO 9756 --- [LibraryManagement] [main] c.S.L.LibraryManagementApplication       : Starting LibraryManagementApplication using Java 17.0.8 with PID 9756 (D:\Aeon_assessment_2026\LibraryManagement\build\classes\java\main started by Syukri in D:\Aeon_assessment_2026\LibraryManagement)
+2026-11-15T16:45:32.983+08:00  INFO 9756 --- [LibraryManagement] [main] c.S.L.LibraryManagementApplication       : No active profile set, falling back to 1 default profile: "default"
+2026-11-15T16:45:35.598+08:00  INFO 9756 --- [LibraryManagement] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-15T16:45:35.949+08:00  INFO 9756 --- [LibraryManagement] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 301 ms. Found 1 JPA repository interface.
+2026-11-15T16:45:37.557+08:00  INFO 9756 --- [LibraryManagement] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-11-15T16:45:37.605+08:00  INFO 9756 --- [LibraryManagement] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-15T16:45:37.605+08:00  INFO 9756 --- [LibraryManagement] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-11-15T16:45:37.947+08:00  INFO 9756 --- [LibraryManagement] [main] o.a.c.c.C.[.[localhost].[/LibDex]        : Initializing Spring embedded WebApplicationContext
+2026-11-15T16:45:37.953+08:00  INFO 9756 --- [LibraryManagement] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4806 ms
+2026-11-15T16:45:39.679+08:00  INFO 9756 --- [LibraryManagement] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-15T16:45:40.333+08:00  INFO 9756 --- [LibraryManagement] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@49cb3881
+2026-11-15T16:45:40.334+08:00  INFO 9756 --- [LibraryManagement] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-15T16:45:40.904+08:00  INFO 9756 --- [LibraryManagement] [main] liquibase.database                       : Set default schema name to public
+2026-11-15T16:45:41.677+08:00  INFO 9756 --- [LibraryManagement] [main] liquibase.lockservice                    : Successfully acquired change log lock
+2026-11-15T16:45:41.897+08:00  INFO 9756 --- [LibraryManagement] [main] liquibase.command                        : Clearing database change log checksums for database postgresql
+2026-11-15T16:45:41.938+08:00  INFO 9756 --- [LibraryManagement] [main] liquibase.lockservice                    : Successfully released change log lock
+2026-11-15T16:45:41.953+08:00  INFO 9756 --- [LibraryManagement] [main] liquibase.command                        : Command execution complete
+2026-11-15T16:45:44.265+08:00  INFO 9756 --- [LibraryManagement] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2026-11-15T16:45:44.447+08:00  INFO 9756 --- [LibraryManagement] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2026-11-15T16:45:44.495+08:00  INFO 9756 --- [LibraryManagement] [main] liquibase.ui                             : Database is up to date, no changesets to execute
+2026-11-15T16:45:44.502+08:00  INFO 9756 --- [LibraryManagement] [main] liquibase.changelog                      : Reading from public.databasechangelog
+2026-11-15T16:45:44.526+08:00  INFO 9756 --- [LibraryManagement] [main] liquibase.util                           : UPDATE SUMMARY
+2026-11-15T16:45:44.527+08:00  INFO 9756 --- [LibraryManagement] [main] liquibase.util                           : Run:                          0
+2026-11-15T16:45:44.527+08:00  INFO 9756 --- [LibraryManagement] [main] liquibase.util                           : Previously run:               6
+2026-11-15T16:45:44.527+08:00  INFO 9756 --- [LibraryManagement] [main] liquibase.util                           : Filtered out:                 0
+2026-11-15T16:45:44.527+08:00  INFO 9756 --- [LibraryManagement] [main] liquibase.util                           : -------------------------------
+2026-11-15T16:45:44.527+08:00  INFO 9756 --- [LibraryManagement] [main] liquibase.util                           : Total change sets:            6
+2026-11-15T16:45:44.527+08:00  INFO 9756 --- [LibraryManagement] [main] liquibase.util                           : Update summary generated
+2026-11-15T16:45:44.531+08:00  INFO 9756 --- [LibraryManagement] [main] liquibase.command                        : Command execution complete
+2026-11-15T16:45:44.720+08:00  INFO 9756 --- [LibraryManagement] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-15T16:45:44.904+08:00  INFO 9756 --- [LibraryManagement] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-11-15T16:45:45.011+08:00  INFO 9756 --- [LibraryManagement] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-15T16:45:45.729+08:00  INFO 9756 --- [LibraryManagement] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-15T16:45:45.927+08:00  INFO 9756 --- [LibraryManagement] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 18.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-11-15T16:45:48.104+08:00  INFO 9756 --- [LibraryManagement] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-15T16:45:48.113+08:00  INFO 9756 --- [LibraryManagement] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-15T16:45:48.929+08:00  WARN 9756 --- [LibraryManagement] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-11-15T16:45:48.994+08:00  WARN 9756 --- [LibraryManagement] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-11-15T16:45:50.081+08:00 DEBUG 9756 --- [LibraryManagement] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, AuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-11-15T16:45:51.126+08:00  INFO 9756 --- [LibraryManagement] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/LibDex'
+2026-11-15T16:45:51.149+08:00  INFO 9756 --- [LibraryManagement] [main] c.S.L.LibraryManagementApplication       : Started LibraryManagementApplication in 19.348 seconds (process running for 20.318)
+2026-11-15T16:45:51.177+08:00  INFO 9756 --- [LibraryManagement] [main] c.S.L.LibraryManagementApplication       : *** STARTED:  Application successfully started ***
+2026-11-15T16:45:51.182+08:00  INFO 9756 --- [LibraryManagement] [main] c.S.L.LibraryManagementApplication       : *** LibDex Service Started ***
+2026-11-15T16:45:51.184+08:00  INFO 9756 --- [LibraryManagement] [main] c.S.L.LibraryManagementApplication       : ✅ Successfully connected to PostgreSQL database: library_db
+2026-11-15T16:46:12.060+08:00  INFO 9756 --- [LibraryManagement] [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/LibDex]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-15T16:46:12.061+08:00  INFO 9756 --- [LibraryManagement] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-15T16:46:12.061+08:00  INFO 9756 --- [LibraryManagement] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-11-15T16:46:12.111+08:00 DEBUG 9756 --- [LibraryManagement] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /api/users/authenticate
+2026-11-15T16:46:12.132+08:00 DEBUG 9756 --- [LibraryManagement] [http-nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-11-15T16:46:12.138+08:00 DEBUG 9756 --- [LibraryManagement] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /api/users/authenticate
+2026-11-15T16:46:17.370+08:00 DEBUG 9756 --- [LibraryManagement] [http-nio-8080-exec-1] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2026-11-15T16:47:00.179+08:00 DEBUG 9756 --- [LibraryManagement] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /api/users/register-user
+2026-11-15T16:47:03.913+08:00 DEBUG 9756 --- [LibraryManagement] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /api/users/register-user
+2026-11-15T16:49:29.757+08:00 DEBUG 9756 --- [LibraryManagement] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing DELETE /api/users/delete-user/0afb95a1-b0da-4973-8072-01604b44c783
+2026-11-15T16:49:29.772+08:00 DEBUG 9756 --- [LibraryManagement] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured DELETE /api/users/delete-user/0afb95a1-b0da-4973-8072-01604b44c783

@@ -12,4 +12,5 @@ public interface UsersService {
     Users registerUser(Users user);
     boolean checkIfUsernameEmailExists(String username, String email);
     UserDTO updateUser(Optional<Users> user);
+    public void deleteUser(UUID userID);
 }

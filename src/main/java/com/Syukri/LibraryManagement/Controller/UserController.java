@@ -60,12 +60,14 @@ public class UserController {
     }
 
     @PostMapping("/register-user")
-    public ResponseEntity<?> registerUser(@RequestBody Users user) {
+    public ResponseEntity<?> registerUser(@RequestBody Users getUser) {
         try {
-            UserDTO userDTO = new UserDTO();
-            userDTO.setUsername(user.getUsername());
-            usersService.registerUser(user);
-            return ResponseEntity.ok().body(userDTO);
+            Users user = usersService.registerUser(getUser);
+            UserDTO.UserDTOBuilder userDto = UserDTO.builder()
+                    .id(user.getId())
+                    .username(user.getUsername())
+                    .email(user.getEmail());
+            return ResponseEntity.ok().body(userDto.build());
 
         }catch (Exception e){
             e.printStackTrace();
@@ -87,6 +89,20 @@ public class UserController {
             e.printStackTrace();
             Map<String, Object> errorResponse = new HashMap<>();
             errorResponse.put("message", "Error updating user: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+        }
+    }
+
+    @DeleteMapping("/delete-user/{userID}")
+    public ResponseEntity<?> deleteUser(@PathVariable UUID userID) {
+        try {
+            usersService.deleteUser(userID);
+            Map<String, Object> response = new HashMap<>();
+            response.put("message", "Successfully deleted selected user ID: "+userID);
+            return ResponseEntity.ok().body(response);
+        }catch (Exception e){
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("message", "Error deleting user: " + e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
         }
     }

@@ -2,6 +2,7 @@ package com.Syukri.LibraryManagement.Service.Impl;
 
 import com.Syukri.LibraryManagement.Dto.UserDTO;
 import com.Syukri.LibraryManagement.Entity.Users;
+import com.Syukri.LibraryManagement.Exception.UserIDNotFound;
 import com.Syukri.LibraryManagement.Exception.UserNotFound;
 import com.Syukri.LibraryManagement.Exception.UsernameEmailAlreadyExisted;
 import com.Syukri.LibraryManagement.Repository.UsersRepository;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UsersServiceImpl implements UsersService {
@@ -102,6 +104,16 @@ public class UsersServiceImpl implements UsersService {
         }
     }
 
+    @Override
+    public void deleteUser(UUID userID) {
+        try {
+            Users getUser = usersRepository.findById(userID).orElseThrow(() -> {
+                        throw new UserIDNotFound(userID);});
+            usersRepository.delete(getUser);
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
 
+    }
 
 }
