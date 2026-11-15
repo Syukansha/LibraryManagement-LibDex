@@ -76,7 +76,7 @@ public class UserController {
     }
 
     @PatchMapping("/edit-user")
-    public ResponseEntity<?> editUser(@RequestBody Users user) {
+    public ResponseEntity<?> updateUser(@RequestBody Users user) {
         try {
             if(user.getId() != null) {
                 return ResponseEntity.ok().body(usersService.updateUser(Optional.ofNullable(user)));
