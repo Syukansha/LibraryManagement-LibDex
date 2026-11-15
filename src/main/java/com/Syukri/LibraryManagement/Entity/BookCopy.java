@@ -1,10 +1,7 @@
 package com.Syukri.LibraryManagement.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -14,6 +11,7 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class BookCopy {
 
     @Id
@@ -24,6 +22,7 @@ public class BookCopy {
     @JoinColumn(name = "BookId", nullable = false)
     private Books book;
 
+    @Builder.Default
     @Column(name = "Availability", nullable = false)
     private boolean available = true;
 
