@@ -16,19 +16,19 @@ public class Books {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "Id")
+    @Column(name = "id")
     private UUID id;
 
-    @Column(name = "Title", nullable = false, length = 255)
+    @Column(name = "title", nullable = false, length = 255)
     private String title;
 
-    @Column(name = "Author", nullable = false, length = 255)
+    @Column(name = "author", nullable = false, length = 255)
     private String author;
 
-    @Column(name = "ISBN", nullable = false, unique = true, length = 13)
+    @Column(name = "isbn", nullable = false, unique = true, length = 13)
     private String ISBN;
 
     @Builder.Default
-    @Column(name = "Availability", nullable = false)
+    @Column(name = "availability", nullable = false)
     private Boolean available = true;
 }

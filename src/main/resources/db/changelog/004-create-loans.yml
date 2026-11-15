@@ -4,7 +4,7 @@ databaseChangeLog:
       author: syukri
       changes:
         - createTable:
-            tableName: Loans
+            tableName: loans
             columns:
               - column:
                   name: id
@@ -13,32 +13,32 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: BorrowerId
+                  name: borrower_id
                   type: uuid
                   constraints:
                     nullable: false
               - column:
-                  name: BookCopyId
+                  name: book_copy_id
                   type: uuid
                   constraints:
                     nullable: false
               - column:
-                  name: BorrowedAt
+                  name: borrowed_at
                   type: timestamptz
                   constraints:
                     nullable: false
               - column:
-                  name: ReturnedAt
+                  name: returned_at
                   type: timestamptz
         - addForeignKeyConstraint:
-            baseTableName: Loans
-            baseColumnNames: BorrowerId
-            referencedTableName: Borrower
-            referencedColumnNames: Id
+            baseTableName: loans
+            baseColumnNames: borrower_id
+            referencedTableName: borrower
+            referencedColumnNames: id
             constraintName: fk_loans_borrower
         - addForeignKeyConstraint:
-            baseTableName: Loans
-            baseColumnNames: BookCopyId
-            referencedTableName: BookCopy
+            baseTableName: loans
+            baseColumnNames: book_copy_id
+            referencedTableName: bookcopy
             referencedColumnNames: id
             constraintName: fk_loans_bookcopy

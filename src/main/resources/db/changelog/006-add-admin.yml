@@ -3,23 +3,23 @@ databaseChangeLog:
       id: 006-add-admin
       author: syukri
       comment: "Default admin account (username: admin, password: password - BCrypt hashed)"
+      preConditions:
+        - onFail: MARK_RAN
+        - tableExists:
+            tableName: users
       changes:
-        - preConditions:
-            - onFail: MARK_RAN
-            - tableExists:
-                tableName: User
         - insert:
-            tableName: User
+            tableName: users
             columns:
               - column:
-                  name: Id
+                  name: id
                   value: 0f8fad5b-d9cb-469f-a165-70867728950e
               - column:
-                  name: Username
+                  name: username
                   value: admin
               - column:
-                  name: Password
-                  value: "$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVKIUi"
+                  name: password
+                  value: "$$2a$12$X0fvEObYBJlAWyc1hH6yceCmEMReE1T1s3LowkuEfZTtbj9FXK/Mi"
               - column:
-                  name: Email
+                  name: email
                   value: admin@library.com

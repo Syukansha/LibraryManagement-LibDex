@@ -17,20 +17,21 @@ public class Loan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id")
     private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "BorrowerId", nullable = false)
+    @JoinColumn(name = "borrower_id", nullable = false)
     private Borrower borrower;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "BookCopyId", nullable = false)
+    @JoinColumn(name = "book_copy_id", nullable = false)
     private BookCopy bookCopy;
 
-    @Column(name = "BorrowedAt", nullable = false, updatable = false)
+    @Column(name = "borrowed_at", nullable = false, updatable = false)
     private Instant borrowedAt;
 
-    @Column(name = "ReturnedAt")
+    @Column(name = "returned_at")
     private Instant returnedAt;
 
     public void markReturned(Instant returnedAt) {

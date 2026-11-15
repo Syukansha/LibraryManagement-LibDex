@@ -1,4 +1,6 @@
 package com.Syukri.LibraryManagement.Service.Impl;
 
-public class BookServiceImpl {
+import com.Syukri.LibraryManagement.Service.BookService;
+
+public class BookServiceImpl implements BookService {
 }

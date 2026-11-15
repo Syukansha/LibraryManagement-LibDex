@@ -4,33 +4,33 @@ databaseChangeLog:
       author: syukri
       changes:
         - createTable:
-            tableName: Books
+            tableName: books
             columns:
               - column:
-                  name: Id
+                  name: id
                   type: uuid
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: Title
+                  name: title
                   type: varchar(255)
                   constraints:
                     nullable: false
               - column:
-                  name: Author
+                  name: author
                   type: varchar(255)
                   constraints:
                     nullable: false
               - column:
-                  name: ISBN
+                  name: isbn
                   type: varchar(13)
                   constraints:
                     nullable: false
                     unique: true
                     uniqueConstraintName: uk_books_isbn
               - column:
-                  name: Availability
+                  name: availability
                   type: boolean
                   defaultValueBoolean: true
                   constraints:

@@ -8,7 +8,7 @@ import lombok.Setter;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Borrower")
+@Table(name = "borrower")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,12 +16,12 @@ public class Borrower {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "Id")
+    @Column(name = "id")
     private UUID id;
 
-    @Column(name = "Name", nullable = false, length = 150)
+    @Column(name = "name", nullable = false, length = 150)
     private String name;
 
-    @Column(name = "Email", nullable = false, unique = true, length = 254)
+    @Column(name = "email", nullable = false, unique = true, length = 254)
     private String email;
 }

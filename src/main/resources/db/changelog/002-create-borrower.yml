@@ -4,21 +4,21 @@ databaseChangeLog:
       author: syukri
       changes:
         - createTable:
-            tableName: Borrower
+            tableName: borrower
             columns:
               - column:
-                  name: Id
+                  name: id
                   type: uuid
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: Name
+                  name: name
                   type: varchar(150)
                   constraints:
                     nullable: false
               - column:
-                  name: Email
+                  name: email
                   type: varchar(254)
                   constraints:
                     nullable: false
