@@ -3,7 +3,6 @@ package com.Syukri.LibraryManagement.Service.Impl;
 import com.Syukri.LibraryManagement.Dto.BooksDTO;
 import com.Syukri.LibraryManagement.Entity.BookCopy;
 import com.Syukri.LibraryManagement.Entity.Books;
-import com.Syukri.LibraryManagement.Exception.UserNotFound;
 import com.Syukri.LibraryManagement.Repository.BookCopyRepository;
 import com.Syukri.LibraryManagement.Repository.BooksRepository;
 import org.junit.jupiter.api.Test;
@@ -13,6 +12,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -34,26 +35,27 @@ class BookServiceImplTest {
     private BookServiceImpl bookService;
 
     @Test
-    void getBookByTitle_returnsDto_whenBookExists() {
+    void getBookByTitle_returnsListOfDto_whenBooksExist() {
         UUID id = UUID.randomUUID();
         Books book = Books.builder().id(id).title("Dune").author("Herbert").ISBN("978-0").available(true).build();
-        when(booksRepository.findByTitle("Dune")).thenReturn(Optional.of(book));
+        when(booksRepository.findByTitle("Dune")).thenReturn(List.of(book));
 
-        Optional<BooksDTO> result = bookService.getBookByTitle("Dune");
+        List<BooksDTO> result = bookService.getBookByTitle("Dune");
 
-        assertThat(result).isPresent();
-        assertThat(result.get().getId()).isEqualTo(id);
-        assertThat(result.get().getTitle()).isEqualTo("Dune");
-        assertThat(result.get().getAuthor()).isEqualTo("Herbert");
-        assertThat(result.get().getISBN()).isEqualTo("978-0");
+        assertThat(result).hasSize(1);
+        assertThat(result.get(0).getId()).isEqualTo(id);
+        assertThat(result.get(0).getTitle()).isEqualTo("Dune");
+        assertThat(result.get(0).getAuthor()).isEqualTo("Herbert");
+        assertThat(result.get(0).getISBN()).isEqualTo("978-0");
     }
 
     @Test
-    void getBookByTitle_throws_whenBookMissing() {
-        when(booksRepository.findByTitle("Missing")).thenReturn(Optional.empty());
+    void getBookByTitle_returnsEmptyList_whenBookMissing() {
+        when(booksRepository.findByTitle("Missing")).thenReturn(Collections.emptyList());
 
-        assertThatThrownBy(() -> bookService.getBookByTitle("Missing"))
-                .isInstanceOf(UserNotFound.class);
+        List<BooksDTO> result = bookService.getBookByTitle("Missing");
+
+        assertThat(result).isEmpty();
     }
 
     @Test
@@ -67,6 +69,7 @@ class BookServiceImplTest {
 
         assertThat(result).isSameAs(savedBook);
 
+        // a BookCopy must be created, linked to the saved book and available
         ArgumentCaptor<BookCopy> captor = ArgumentCaptor.forClass(BookCopy.class);
         verify(bookCopyRepository).save(captor.capture());
         BookCopy createdCopy = captor.getValue();
@@ -109,6 +112,7 @@ class BookServiceImplTest {
         Books request = Books.builder().id(id).title("ghost").build();
         when(booksRepository.findById(id)).thenReturn(Optional.empty());
 
+        // wrapped as RuntimeException by the catch block
         assertThatThrownBy(() -> bookService.updateBook(Optional.of(request)))
                 .isInstanceOf(RuntimeException.class);
         verify(booksRepository, never()).save(any());
@@ -138,6 +142,7 @@ class BookServiceImplTest {
         UUID id = UUID.randomUUID();
         when(booksRepository.findById(id)).thenReturn(Optional.empty());
 
+        // deleteBook wraps everything (including UserIDNotFound) in a plain RuntimeException
         assertThatThrownBy(() -> bookService.deleteBook(id))
                 .isInstanceOf(RuntimeException.class);
         verify(booksRepository, never()).delete(any());

@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -22,14 +23,12 @@ public class BooksController {
     private BookService bookService;
 
     @GetMapping("/get-book/{title}")
-    public ResponseEntity<BooksDTO> getBookByTitle(@PathVariable String title) {
-        try {
-            Optional<BooksDTO> booksDTO = bookService.getBookByTitle(title);
-            return ResponseEntity.ok().body(booksDTO.get());
-
-        } catch (RuntimeException e) {
-            throw new RuntimeException(e);
+    public ResponseEntity<List<BooksDTO>> getBookByTitle(@PathVariable String title) {
+        List<BooksDTO> books = bookService.getBookByTitle(title);
+        if (books.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(books);
         }
+        return ResponseEntity.ok(books);
     }
 
     @PostMapping("/register-book")

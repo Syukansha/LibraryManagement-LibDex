@@ -12,8 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -24,21 +26,16 @@ public class BookServiceImpl implements BookService {
     private BookCopyRepository bookCopyRepository;
 
     @Override
-    public Optional<BooksDTO> getBookByTitle(String title) {
-        Optional<Books> book = Optional.ofNullable(booksRepository.findByTitle(title)
-                .orElseThrow(() -> new UserNotFound(title)));
-        if(book.isPresent()){
-            BooksDTO.BooksDTOBuilder booksDTO = BooksDTO.builder()
-                    .id(book.get().getId())
-                    .title(book.get().getTitle())
-                    .author(book.get().getAuthor())
-                    .ISBN(book.get().getISBN())
-                    .available(book.get().getAvailable());
-            return Optional.of(booksDTO.build());
-        }
-        else {
-            throw new UserNotFound(title);
-        }
+    public List<BooksDTO> getBookByTitle(String title) {
+        List<Books> books = booksRepository.findByTitle(title);
+        return books.stream().map(book -> BooksDTO.builder()
+                .id(book.getId())
+                .title(book.getTitle())
+                .author(book.getAuthor())
+                .ISBN(book.getISBN())
+                .available(book.getAvailable())
+                .build()
+        ).collect(Collectors.toList());
     }
 
     @Override
@@ -108,6 +105,8 @@ public class BookServiceImpl implements BookService {
     @Override
     public void deleteBook(UUID bookID) {
         try {
+            BookCopy getBookCopy = bookCopyRepository.findById(bookID).orElseThrow(() -> {
+                throw new UserIDNotFound(bookID);});
             Books getBook = booksRepository.findById(bookID).orElseThrow(() -> {
                 throw new UserIDNotFound(bookID);});
             booksRepository.delete(getBook);
