@@ -142,7 +142,7 @@ class BookServiceImplTest {
         UUID id = UUID.randomUUID();
         when(booksRepository.findById(id)).thenReturn(Optional.empty());
 
-        // deleteBook wraps everything (including UserIDNotFound) in a plain RuntimeException
+        // deleteBook wraps everything (including DataIDNotFound) in a plain RuntimeException
         assertThatThrownBy(() -> bookService.deleteBook(id))
                 .isInstanceOf(RuntimeException.class);
         verify(booksRepository, never()).delete(any());

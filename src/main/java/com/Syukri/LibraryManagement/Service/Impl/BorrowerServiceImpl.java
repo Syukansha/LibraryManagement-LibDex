@@ -2,7 +2,7 @@ package com.Syukri.LibraryManagement.Service.Impl;
 
 import com.Syukri.LibraryManagement.Dto.BorrowerDTO;
 import com.Syukri.LibraryManagement.Entity.Borrower;
-import com.Syukri.LibraryManagement.Exception.UserIDNotFound;
+import com.Syukri.LibraryManagement.Exception.DataIDNotFound;
 import com.Syukri.LibraryManagement.Exception.UserNotFound;
 import com.Syukri.LibraryManagement.Exception.UsernameEmailAlreadyExisted;
 import com.Syukri.LibraryManagement.Repository.BorrowerRepository;
@@ -92,7 +92,7 @@ public class BorrowerServiceImpl implements BorrowerService {
     public void deleteBorrower(UUID borrowerID) {
         try {
             Borrower getBorrower = borrowerRepository.findById(borrowerID).orElseThrow(() -> {
-                throw new UserIDNotFound(borrowerID);});
+                throw new DataIDNotFound(borrowerID);});
             borrowerRepository.delete(getBorrower);
         }catch (Exception e){
             throw new RuntimeException(e.getMessage());

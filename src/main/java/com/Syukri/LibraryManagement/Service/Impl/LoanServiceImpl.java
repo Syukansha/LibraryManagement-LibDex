@@ -7,7 +7,7 @@ import com.Syukri.LibraryManagement.Entity.Borrower;
 import com.Syukri.LibraryManagement.Entity.Loan;
 import com.Syukri.LibraryManagement.Exception.BookAlreadyBorrowedException;
 import com.Syukri.LibraryManagement.Exception.BookNotOnLoanException;
-import com.Syukri.LibraryManagement.Exception.UserIDNotFound;
+import com.Syukri.LibraryManagement.Exception.DataIDNotFound;
 import com.Syukri.LibraryManagement.Repository.BookCopyRepository;
 import com.Syukri.LibraryManagement.Repository.BooksRepository;
 import com.Syukri.LibraryManagement.Repository.BorrowerRepository;
@@ -39,10 +39,10 @@ public class LoanServiceImpl implements LoanService {
     @Transactional
     public LoanDTO borrowBook(UUID borrowerId, UUID bookId) {
         Borrower borrower = borrowerRepository.findById(borrowerId)
-                .orElseThrow(() -> new UserIDNotFound(borrowerId));
+                .orElseThrow(() -> new DataIDNotFound(borrowerId));
 
         Books book = booksRepository.findById(bookId)
-                .orElseThrow(() -> new UserIDNotFound(bookId));
+                .orElseThrow(() -> new DataIDNotFound(bookId));
 
         if (loanRepository.findByBookCopyBookIdAndReturnedAtIsNull(bookId).isPresent()) {
             throw new BookAlreadyBorrowedException(bookId);

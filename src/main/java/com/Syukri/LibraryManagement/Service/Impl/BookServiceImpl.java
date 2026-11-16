@@ -3,7 +3,8 @@ package com.Syukri.LibraryManagement.Service.Impl;
 import com.Syukri.LibraryManagement.Dto.BooksDTO;
 import com.Syukri.LibraryManagement.Entity.BookCopy;
 import com.Syukri.LibraryManagement.Entity.Books;
-import com.Syukri.LibraryManagement.Exception.UserIDNotFound;
+import com.Syukri.LibraryManagement.Exception.BookNotFound;
+import com.Syukri.LibraryManagement.Exception.DataIDNotFound;
 import com.Syukri.LibraryManagement.Exception.UserNotFound;
 import com.Syukri.LibraryManagement.Repository.BookCopyRepository;
 import com.Syukri.LibraryManagement.Repository.BooksRepository;
@@ -70,7 +71,7 @@ public class BookServiceImpl implements BookService {
 
             Books existingBook = booksRepository.findById(request.getId())
                     .orElseThrow(() ->
-                            new UserNotFound(request.getTitle()));
+                            new BookNotFound(request.getTitle()));
 
             if (request.getTitle() != null) {
                 existingBook.setTitle(request.getTitle());
@@ -106,9 +107,9 @@ public class BookServiceImpl implements BookService {
     public void deleteBook(UUID bookID) {
         try {
             BookCopy getBookCopy = bookCopyRepository.findById(bookID).orElseThrow(() -> {
-                throw new UserIDNotFound(bookID);});
+                throw new DataIDNotFound(bookID);});
             Books getBook = booksRepository.findById(bookID).orElseThrow(() -> {
-                throw new UserIDNotFound(bookID);});
+                throw new DataIDNotFound(bookID);});
             booksRepository.delete(getBook);
         }catch (Exception e){
             throw new RuntimeException(e.getMessage());

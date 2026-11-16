@@ -3,7 +3,7 @@ package com.Syukri.LibraryManagement.Controller;
 import com.Syukri.LibraryManagement.Dto.LoanRequestDTO;
 import com.Syukri.LibraryManagement.Exception.BookAlreadyBorrowedException;
 import com.Syukri.LibraryManagement.Exception.BookNotOnLoanException;
-import com.Syukri.LibraryManagement.Exception.UserIDNotFound;
+import com.Syukri.LibraryManagement.Exception.DataIDNotFound;
 import com.Syukri.LibraryManagement.Service.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +29,7 @@ public class LoanController {
                     loanService.borrowBook(request.getBorrowerId(), request.getBookId()));
         } catch (BookAlreadyBorrowedException e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(error(e));
-        } catch (UserIDNotFound e) {
+        } catch (DataIDNotFound e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error(e));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error(e));
