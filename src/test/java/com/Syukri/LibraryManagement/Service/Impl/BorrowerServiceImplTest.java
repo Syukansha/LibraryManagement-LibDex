@@ -92,7 +92,6 @@ class BorrowerServiceImplTest {
         when(borrowerRepository.findByName("ghost")).thenReturn(Optional.empty());
         when(borrowerRepository.findByEmail("ghost@test.com")).thenReturn(Optional.empty());
 
-        // NOTE: method name is inverted — it returns true when the borrower does NOT exist
         assertThat(borrowerService.checkIfNameEmailExists("ghost", "ghost@test.com")).isTrue();
     }
 
@@ -127,7 +126,6 @@ class BorrowerServiceImplTest {
         Borrower request = Borrower.builder().id(id).name("nobody").build();
         when(borrowerRepository.findById(id)).thenReturn(Optional.empty());
 
-        // wrapped as RuntimeException by the catch block
         assertThatThrownBy(() -> borrowerService.updateBorrower(Optional.of(request)))
                 .isInstanceOf(RuntimeException.class);
         verify(borrowerRepository, never()).save(any());
@@ -156,7 +154,6 @@ class BorrowerServiceImplTest {
         UUID id = UUID.randomUUID();
         when(borrowerRepository.findById(id)).thenReturn(Optional.empty());
 
-        // deleteBorrower wraps everything (including UserIDNotFound) in a plain RuntimeException
         assertThatThrownBy(() -> borrowerService.deleteBorrower(id))
                 .isInstanceOf(RuntimeException.class);
         verify(borrowerRepository, never()).delete(any());

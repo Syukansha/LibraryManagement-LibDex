@@ -122,7 +122,6 @@ class UsersServiceImplTest {
         UUID id = UUID.randomUUID();
         when(usersRepository.findById(id)).thenReturn(Optional.empty());
 
-        // deleteUser wraps everything (including UserIDNotFound) in a plain RuntimeException
         assertThatThrownBy(() -> usersService.deleteUser(id))
                 .isInstanceOf(RuntimeException.class);
         verify(usersRepository, never()).delete(any());
@@ -151,7 +150,6 @@ class UsersServiceImplTest {
         Users request = Users.builder().id(id).username("nobody").build();
         when(usersRepository.findById(id)).thenReturn(Optional.empty());
 
-        // wrapped as RuntimeException by the catch block
         assertThatThrownBy(() -> usersService.updateUser(Optional.of(request)))
                 .isInstanceOf(RuntimeException.class);
         verify(usersRepository, never()).save(any());

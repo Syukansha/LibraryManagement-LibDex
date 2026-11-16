@@ -67,7 +67,6 @@ class BookServiceImplTest {
 
         assertThat(result).isSameAs(savedBook);
 
-        // a BookCopy must be created, linked to the saved book and available
         ArgumentCaptor<BookCopy> captor = ArgumentCaptor.forClass(BookCopy.class);
         verify(bookCopyRepository).save(captor.capture());
         BookCopy createdCopy = captor.getValue();
@@ -110,7 +109,6 @@ class BookServiceImplTest {
         Books request = Books.builder().id(id).title("ghost").build();
         when(booksRepository.findById(id)).thenReturn(Optional.empty());
 
-        // wrapped as RuntimeException by the catch block
         assertThatThrownBy(() -> bookService.updateBook(Optional.of(request)))
                 .isInstanceOf(RuntimeException.class);
         verify(booksRepository, never()).save(any());
@@ -140,7 +138,6 @@ class BookServiceImplTest {
         UUID id = UUID.randomUUID();
         when(booksRepository.findById(id)).thenReturn(Optional.empty());
 
-        // deleteBook wraps everything (including UserIDNotFound) in a plain RuntimeException
         assertThatThrownBy(() -> bookService.deleteBook(id))
                 .isInstanceOf(RuntimeException.class);
         verify(booksRepository, never()).delete(any());
