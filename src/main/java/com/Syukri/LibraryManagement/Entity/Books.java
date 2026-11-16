@@ -35,8 +35,4 @@ public class Books {
     @JsonAlias("ISBN")
     @Column(name = "isbn", nullable = false, length = 36)
     private String ISBN;
-
-    @Builder.Default
-    @Column(name = "availability", nullable = false)
-    private Boolean available = true;
 }

@@ -37,7 +37,7 @@ class BookServiceImplTest {
     @Test
     void getBookByTitle_returnsListOfDto_whenBooksExist() {
         UUID id = UUID.randomUUID();
-        Books book = Books.builder().id(id).title("Dune").author("Herbert").ISBN("978-0").available(true).build();
+        Books book = Books.builder().id(id).title("Dune").author("Herbert").ISBN("978-0").build();
         when(booksRepository.findByTitle("Dune")).thenReturn(List.of(book));
 
         List<BooksDTO> result = bookService.getBookByTitle("Dune");
@@ -62,7 +62,7 @@ class BookServiceImplTest {
     void registerBook_savesBookAndCreatesAnAvailableCopy() {
         Books input = Books.builder().title("Dune").author("Herbert").ISBN("978-0").build();
         UUID savedId = UUID.randomUUID();
-        Books savedBook = Books.builder().id(savedId).title("Dune").author("Herbert").ISBN("978-0").available(true).build();
+        Books savedBook = Books.builder().id(savedId).title("Dune").author("Herbert").ISBN("978-0").build();
         when(booksRepository.save(any(Books.class))).thenReturn(savedBook);
 
         Books result = bookService.registerBook(input);
@@ -91,7 +91,7 @@ class BookServiceImplTest {
     @Test
     void updateBook_returnsUpdatedDto_whenBookExists() {
         UUID id = UUID.randomUUID();
-        Books existing = Books.builder().id(id).title("old").author("oldAuthor").ISBN("old-isbn").available(true).build();
+        Books existing = Books.builder().id(id).title("old").author("oldAuthor").ISBN("old-isbn").build();
         Books request = Books.builder().id(id).title("new").build(); // author/ISBN left null
         when(booksRepository.findById(id)).thenReturn(Optional.of(existing));
 

@@ -34,7 +34,6 @@ public class BookServiceImpl implements BookService {
                 .title(book.getTitle())
                 .author(book.getAuthor())
                 .ISBN(book.getISBN())
-                .available(book.getAvailable())
                 .build()
         ).collect(Collectors.toList());
     }
@@ -47,9 +46,6 @@ public class BookServiceImpl implements BookService {
                     .title(book.getTitle())
                     .author(book.getAuthor())
                     .ISBN(book.getISBN());
-            if(book.getAvailable() != null) {
-                bookBuilder.available(book.getAvailable());
-            }
             Books savedBook = booksRepository.save(bookBuilder.build());
 
             BookCopy copy = new BookCopy();
@@ -85,16 +81,11 @@ public class BookServiceImpl implements BookService {
                 existingBook.setISBN(request.getISBN());
             }
 
-            if (request.getAvailable() != null) {
-                existingBook.setAvailable(request.getAvailable());
-            }
-
             BooksDTO.BooksDTOBuilder booksDTO = BooksDTO.builder()
                     .id(existingBook.getId())
                     .title(existingBook.getTitle())
                     .author(existingBook.getAuthor())
-                    .ISBN(existingBook.getISBN())
-                    .available(existingBook.getAvailable());
+                    .ISBN(existingBook.getISBN());
             booksRepository.save(existingBook);
             return booksDTO.build();
 

@@ -21,5 +21,7 @@ databaseChangeLog:
       file: db/changelog/010-update-admin-password.yml
   - include:
       file: db/changelog/011-update-admin-password-corrected.yml
+  - include:
+      file: db/changelog/012-drop-books-availability.yml
 
 

@@ -39,8 +39,7 @@ public class BooksController {
                     .id(book.getId())
                     .title(book.getTitle())
                     .author(book.getAuthor())
-                    .ISBN(book.getISBN())
-                    .available(book.getAvailable());
+                    .ISBN(book.getISBN());
             return ResponseEntity.ok().body(bookDto.build());
 
         }catch (Exception e){

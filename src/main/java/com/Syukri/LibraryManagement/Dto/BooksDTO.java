@@ -19,6 +19,4 @@ public class BooksDTO {
     private String title;
     private String author;
     private String ISBN;
-    @Builder.Default
-    private Boolean available = true;
 }
