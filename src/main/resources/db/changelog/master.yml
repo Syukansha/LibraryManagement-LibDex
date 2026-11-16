@@ -17,5 +17,9 @@ databaseChangeLog:
       file: db/changelog/008-drop-books-isbn-unique.yml
   - include:
       file: db/changelog/009-rename-bookcopy-to-book-copy.yml
+  - include:
+      file: db/changelog/010-update-admin-password.yml
+  - include:
+      file: db/changelog/011-update-admin-password-corrected.yml
 
 

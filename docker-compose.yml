@@ -9,16 +9,19 @@ services:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      # postgres:18+ images expect the mount at /var/lib/postgresql (data is
+      # stored in a version-specific subdirectory), not the old .../data path.
+      - pgdata:/var/lib/postgresql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d library_db"]
       interval: 5s
       timeout: 3s
       retries: 12
-    # Not published to the host: reachable only from the app container.
-    # Uncomment to inspect it from the host on port 5433:
-    # ports:
-    #   - "5433:5432"
+    # Published to the host so a locally-run app (default DB_URL=localhost:5432)
+    # and host DB clients (pgAdmin/psql/IDE) can reach it. Inside the compose
+    # network the app still connects via db:5432.
+    ports:
+      - "5432:5432"
 
   app:
     build: .

@@ -3,6 +3,7 @@ databaseChangeLog:
       id: 006-add-admin
       author: syukri
       comment: "Default admin account (username: admin, password: password - BCrypt hashed)"
+      validCheckSum: ANY
       preConditions:
         - onFail: MARK_RAN
         - tableExists:
@@ -19,7 +20,7 @@ databaseChangeLog:
                   value: admin
               - column:
                   name: password
-                  value: "$$2a$12$X0fvEObYBJlAWyc1hH6yceCmEMReE1T1s3LowkuEfZTtbj9FXK/Mi"
+                  value: "$2a$10$msxQ/5i4xkKeASuCFOiH8OhppmibOchn2EjSPF5tlixnkW6njW2Gu"
               - column:
                   name: email
                   value: admin@library.com
