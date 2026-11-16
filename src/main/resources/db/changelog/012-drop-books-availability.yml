@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: drop-books-availability-column
+      author: Syukri
+      changes:
+        - dropColumn:
+            tableName: books
+            columnName: availability

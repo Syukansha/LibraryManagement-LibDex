@@ -1,6 +1,3 @@
-# Declarative runtime topology (12-factor IV/V): the app and its backing
-# Postgres declared as desired state. All varying values are substituted from
-# the gitignored .env file (template: .env.example) - `docker compose up --build`.
 services:
   db:
     image: postgres:18-alpine
@@ -9,17 +6,12 @@ services:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
-      # postgres:18+ images expect the mount at /var/lib/postgresql (data is
-      # stored in a version-specific subdirectory), not the old .../data path.
       - pgdata:/var/lib/postgresql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d library_db"]
       interval: 5s
       timeout: 3s
       retries: 12
-    # Published to the host so a locally-run app (default DB_URL=localhost:5432)
-    # and host DB clients (pgAdmin/psql/IDE) can reach it. Inside the compose
-    # network the app still connects via db:5432.
     ports:
       - "5432:5432"
 
